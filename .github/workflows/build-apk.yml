@@ -19,6 +19,9 @@ jobs:
         run: |
           mkdir www
           cp index.html www/
+          ls -l www
+          grep -c "font-face" www/index.html
+          grep -c "btnStart" www/index.html
       - name: Pasang Capacitor
         run: |
           npm init -y
@@ -33,5 +36,5 @@ jobs:
           ./gradlew assembleDebug
       - uses: actions/upload-artifact@v4
         with:
-          name: sidang-nalar-apk
+          name: sidang-nalar-apk-${{ github.run_number }}
           path: android/app/build/outputs/apk/debug/app-debug.apk
