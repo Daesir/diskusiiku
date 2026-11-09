@@ -11,15 +11,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 21
-      -- name: Siapkan folder www
+      - name: Siapkan folder www
         run: |
           mkdir www
-          rsync -a --exclude='.git' --exclude='.github' --exclude='www' --exclude='README.md' ./ www/
-          ls -R www | head -60
+          cp index.html www/
       - name: Pasang Capacitor
         run: |
           npm init -y
